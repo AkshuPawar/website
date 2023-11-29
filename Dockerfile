@@ -1,8 +1,12 @@
-# Use a base image - for example, NGINX
 FROM nginx:alpine
 
-# Copy the contents of the current directory (including index.html) into the /var/www/html directory of the container
-COPY . /var/www/html
+# Remove default NGINX configuration file
+RUN rm /etc/nginx/conf.d/default.conf
 
-# Expose port 80 for web traffic
+# Add your custom configuration
+COPY nginx.conf /etc/nginx/conf.d/
+
+# Copy your content to NGINX html directory
+COPY . /usr/share/nginx/html
+
 EXPOSE 80
