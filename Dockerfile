@@ -1,8 +1,8 @@
-FROM httpd:latest
-ENV PATH="/usr/local/apache2/bin:$PATH"
+# Use a base image - for example, NGINX
+FROM nginx:alpine
 
-COPY index.html /usr/local/apache2/htdocs/index.html
+# Copy the contents of the current directory (including index.html) into the /var/www/html directory of the container
+COPY . /var/www/html
 
+# Expose port 80 for web traffic
 EXPOSE 80
-
-CMD ["apache2", "-D", "FOREGROUND"]
