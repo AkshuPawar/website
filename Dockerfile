@@ -1,12 +1,5 @@
-FROM nginx:alpine
-
-# Remove default NGINX configuration file
-RUN rm /etc/nginx/conf.d/default.conf
-
-# Add your custom configuration
-#COPY nginx.conf /etc/nginx/conf.d/
-
+FROM akshpawardocker/httpd:latest
 # Copy your content to NGINX html directory
-COPY . /usr/share/nginx/html
+COPY . /var/www/html/
 
 EXPOSE 80
